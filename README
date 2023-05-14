@@ -1,27 +1,27 @@
-# How to use this script
+# How to use the data preparation scripts
+
+## Script preparation:
+Requirements: SPM, CONN, Marsbar, VarTBX, BCT toolboxes in matlab path
+Otherwise please refer to individual scripts for specific variables set-up.
+
+# How to use the prediction script
 
 ## Data preparation:
-    
-????Define a working directory and set this under path_workingdirectory
     
 Prepare the data: this script takes tab-delimited text files as input for features and labels. Usually, tab-delimited text can easily be exported from statistic programs or excel  
 Make sure that labels are coded as numbers, for instance 0.0 for Nonresponders and 1.0 for Responders  
 Make sure the data in these text files uses a point as decimal separator and variable names do not include special characters  
-???The script assumes that all text files include the variable name in the top line  
-????Save the feature, label and group data in a subfolder 'data' under your working directory
+The script assumes that all text files include the variable name in the top line  
 Please code a missing value as 777 for mode-imputation, 888 for median-imputation or 999 for arithmetic mean-imputation.
-
+Create a directory for the current analysis, and save feature and label files in that directory
     
 ## Script preparation:
-??? Make sure all needed requirements for this script are installed by running "pip install -r "requirements.txt". 
 Name your model in options{'name_model':} - this will be used to name all outputs by the script  
-???Give the names of your text files including features, labels under options['name_features'], options['name_labels']
-
+Give the names of your .txt files including features and labels under options['name_features'], options['name_labels']
+Set the path of output directory under standardpath. The directory must already exist and must contain feature and label files. All output folders and files will be created in this directory.
 Set the number of total iterations under options['number_iterations']  
 Set the train-test split size under options['test_size_option']
 Set the on/off computation of Shapley values for 1st-level classifiers under options['shap']  
 Set the on/off computation of dummy classifier (always predicting majority class) predictions under options['dummy_option']
 Set the LASSO feature importance selection threshold under options['threshold option']
-
-
-???Use map or pool.map at the end of the script depending on whether you run this on your local computer or on a cluster  
+Use map or pool.map at the end of the script depending on whether you run this on your local computer or on a cluster  
